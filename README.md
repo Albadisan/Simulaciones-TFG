@@ -12,9 +12,9 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
     Se resuelve por tanto la ecuación:
 
-     $$ d \hat{W} /dx= DaC (\hat{C}_A^0 − \hat{W})$$,
+     $$ d \hat{W} /dx= DaC (\hat{C}_A^0 − \hat{W})$$
   
-     $$\hat{W}(0) = \hat{W}_{in}$$.
+     $$\hat{W}(0) = \hat{W}_{in}$$
 
 - MODELO 2 : Segunda etapa para llegar a la simulación final. 
   
@@ -27,5 +27,6 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
     Se resuelve por tanto la ecuación:
 
-     $\hat{W} /dx= (1/Pe_C)*d^2\hat{W}/dx^2 + DaC (\hat{WC}_A^0 − \hat{W})$,
-     $\hat{W}(0) = \hat{W}_{in}$.
+     $$\hat{W} /dx= (1/Pe_C)*d^2\hat{W}/dx^2 + DaC (\hat{WC}_A^0 − \hat{W})$$
+  
+     $$\hat{W}(0) = \hat{W}_{in}$$
