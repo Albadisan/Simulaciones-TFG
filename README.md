@@ -1,6 +1,14 @@
 # Simulaciones-TFG
 En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Intercambio Gaseoso en Biochips Pulmonares: Análisis y Extensiones Fisiológicas" se pretende desarrollar una simulación en Python. Se crea este repositorio para guardar los scripts de cada etapa hasta conseguir la simulación final.
 
+La simulación que se pretende hacer es la del sistema:
+
+$$ \frac{\partial\hat{C}_A}{\partial {\hat{t}}} + r_v\frac{\partial\hat{C}_A}{\partial \hat{x}} = \frac{1}{Pe_A}\frac{\partial^2\hat{C}_A}{\partial x^2} - Da_A(\hat{C}_A -\hat{W})4$$
+
+$$ \hat{\alpha}(\hat{W})\left[\frac{\partial\hat{W}}{\partial {\hat{t}}} + \frac{\partial\hat{W}}{\partial \hat{x}} \right] = \frac{1}{Pe_C}\frac{\partial}{\partial \hat{x}} \left(\hat{D}(\hat{W})\frac{\partial \hat{W}}{\partial \hat{x}} \right) + Da_C(\hat{C}_A -\hat{W})$$
+
+Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cada etapa se van relajando hipótesis hasta alcanzar las ecuaciones del modelo que pretendemos simular. De esta forma vamos validando poco a poco las simulaciones.
+
 - MODELO 1 : Primera etapa para llegar a la simulación final. 
   
     Se imponen 4 hipótesis:
@@ -23,7 +31,7 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
      1) Sin hemoglobina: $Z_0 = 0$
      2) Estado estacionario: $d/dt = 0$
      3) Concentración alveolar fija: $\hat{C}_A(x) = \hat{C}_A^0$
-     4) No hay difusión axial: $Pe_C$ finito
+     4) Hay difusión axial: $Pe_C$ finito
 
     Se resuelve por tanto la ecuación:
 
