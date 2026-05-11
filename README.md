@@ -44,4 +44,5 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
      $$\frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A^0 − \hat{W})$$
   
-     $$\hat{W}(0) = \hat{W}_{in}$$
+     $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
+     $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
