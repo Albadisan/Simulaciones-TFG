@@ -31,7 +31,7 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
   
      $$\hat{W}(0) = \hat{W}_{in}$$
  
-- MODELO 3 : Tercra etapa para llegar a la simulación final. 
+- MODELO 3 : Tercera etapa para llegar a la simulación final. 
   
     Se imponen 2 hipótesis:
 
@@ -48,5 +48,20 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
      $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
 
+- MODELO 4 : Cuarta etapa para llegar a la simulación final. 
+  
+    Se imponen 1 hipótesis:
+
+     1) Sin hemoglobina: $Z_0 = 0$
+
+    Se resuelve por tanto el sistema:
+
+     $$\frac{d \hat{C}}{dt} + r_v \frac{d \hat{C}}{dx}= \frac{1}{Pe_A}\frac{d^2 \hat{C}}{dx^2} - DaA (\hat{C}_A^0 − \hat{W})$$
+
+     $$\frac{d \hat{W}}{dt} + \frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A^0 − \hat{W})$$
+  
+     $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
+
+     $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
 
   
