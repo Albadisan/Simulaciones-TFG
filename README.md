@@ -72,8 +72,4 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
   
      En $x=1$: $\hspace{1cm} \frac{d\hat{C}_A}{dx} = 0$, $\frac{d\hat{W}}{dx} = 0$ (Neumann homogénea)
   
-     $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
-
-     $$\frac{\partial \hat{C}}{\partial x}(1) = 0 \hspace{1cm} \frac{\partial \hat{W}}{\partial x}(1) = 0$$
-
-  
+     
