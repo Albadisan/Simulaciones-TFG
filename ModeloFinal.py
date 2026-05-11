@@ -3,7 +3,7 @@ Modelo Final del biochip alvéolo--capilar
 
 Este script resuelve el sistema:
 
-             C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
+            C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
    alfa(W) (W_t +    W_x) = (1/Pe_C)(D(W)W_x)_x + Da_C (C - W),
 
 con condiciones de Dirichlet en la entrada y condiciones de Neumann homogéneas
