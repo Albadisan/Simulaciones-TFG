@@ -51,12 +51,9 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
      $$r_v \frac{d \hat{C}}{dx}= \frac{1}{Pe_A}\frac{d^2 \hat{C}}{dx^2} - DaA (\hat{C}_A − \hat{W})$$
 
      $$\frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A − \hat{W})$$
+
+     En $x=0$: $\hat{C}_A (0) = \hat{C}_{A,in}$, $\hat{W}(0) = \hat{W}_{in}$
   
-     $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
-
-     $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
-
-     En $x=0$: $\hat{C}_A(0) = \hat{C}_{A,in}$, $\hat{W}(0) = \hat{W}_{in}$
      En $x=1$: $\frac{d\hat{C}_A}{dx} = 0$, $\frac{d\hat{W}}{dx} = 0$ (Neumann homogénea)
 
 - MODELO 4 : Cuarta etapa para llegar a la simulación final. 
