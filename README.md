@@ -7,13 +7,13 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
      1) Sin hemoglobina: $Z_0 = 0$
      2) Estado estacionario: $d/dt = 0$
-     3) Concentración alveolar fija: $C_A(x)=C_A^0$
-     4) No hay difusión axial: Pe_C -> inf
+     3) Concentración alveolar fija: $\hat{C}_A(x) = hat{C}_A^0$
+     4) No hay difusión axial: Pe_C \to \inf
 
     Se resuelve por tanto la ecuación:
 
-     $dW/dx= DaC (C_A^0 − W)$,
-     $W(0) = Win$.
+     $d\hat{W}/dx= DaC (hat{C}_A^0 − \hat{W})$,
+     $\hat{W}(0) = \hat{W}_{in}$.
 
 - MODELO 2 : Segunda etapa para llegar a la simulación final. 
   
@@ -21,10 +21,10 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
      1) Sin hemoglobina: $Z_0 = 0$
      2) Estado estacionario: $d/dt = 0$
-     3) Concentración alveolar fija: $C_A(x)=C_A^0$
+     3) Concentración alveolar fija: $\hat{C}_A(x) = \hat{C}_A^0$
      4) No hay difusión axial: Pe_C finito
 
     Se resuelve por tanto la ecuación:
 
-     $W/dx= (1/Pe_C)*d^2W/dx^2 + DaC (C_A^0 − W)$,
-     $W(0) = Win$.
+     $\hat{W}/dx= (1/Pe_C)*d^2\hat{W}/dx^2 + DaC (\hat{WC}_A^0 − \hat{W})$,
+     $\hat{W}(0) = \hat{W}_{in}$.
