@@ -48,9 +48,9 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
     Se resuelve por tanto el sistema:
 
-     $$r_v \frac{d \hat{C}}{dx}= \frac{1}{Pe_A}\frac{d^2 \hat{C}}{dx^2} - DaA (\hat{C}_A^0 − \hat{W})$$
+     $$r_v \frac{d \hat{C}}{dx}= \frac{1}{Pe_A}\frac{d^2 \hat{C}}{dx^2} - DaA (\hat{C}_A − \hat{W})$$
 
-     $$\frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A^0 − \hat{W})$$
+     $$\frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A − \hat{W})$$
   
      $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
 
@@ -64,12 +64,12 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
     Se resuelve por tanto el sistema:
 
-     $$\frac{d \hat{C}}{dt} + r_v \frac{d \hat{C}}{dx}= \frac{1}{Pe_A}\frac{d^2 \hat{C}}{dx^2} - DaA (\hat{C}_A^0 − \hat{W})$$
+     $$\frac{\partial \hat{C}}{\partial t} + r_v \frac{\partial \hat{C}}{\partial x}= \frac{1}{Pe_A}\frac{\partial^2 \hat{C}}{\partial x^2} - DaA (\hat{C}_A − \hat{W})$$
 
-     $$\frac{d \hat{W}}{dt} + \frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A^0 − \hat{W})$$
+     $$\frac{\partial \hat{W}}{\partial t} + \frac{\partial \hat{W}}{\partial x}= \frac{1}{Pe_C} \frac{\partial^2 \hat{W}}{\partial x^2} + DaC (\hat{C}_A − \hat{W})$$
   
      $$\hat{C}(0) = \hat{C}_{A,in} \hspace{1cm} \hat{W}(0) = \hat{W}_{in}$$
 
-     $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
+     $$\frac{\partial \hat{C}}{\partial x}(1) = 0 \hspace{1cm} \frac{\partial \hat{W}}{\partial x}(1) = 0$$
 
   
