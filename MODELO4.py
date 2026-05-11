@@ -4,7 +4,7 @@ Modelo 4 del biochip alvéolo--capilar: sistema transitorio lineal acoplado
 Este script resuelve el sistema:
 
    C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
-   C_t +    W_x = (1/Pe_C)W_xx + Da_C (C - W),
+   W_t +    W_x = (1/Pe_C)W_xx + Da_C (C - W),
 
 con condiciones de Dirichlet en la entrada y condiciones de Neumann homogéneas
 en la salida. Además, calcula el Modelo 3 estacionario correspondiente y verifica
