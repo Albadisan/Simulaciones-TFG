@@ -56,6 +56,9 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
      $$\frac{d \hat{C}}{dx}(1) = 0 \hspace{1cm} \frac{d \hat{W}}{dx}(1) = 0$$
 
+     En $x=0$: $\hat{C}_A(0) = \hat{C}_{A,in}$, $\hat{W}(0) = \hat{W}_{in}$
+     En $x=1$: $\frac{d\hat{C}_A}{dx} = 0$, $\frac{d\hat{W}}{dx} = 0$ (Neumann homogénea)
+
 - MODELO 4 : Cuarta etapa para llegar a la simulación final. 
   
     Se imponen 1 hipótesis:
