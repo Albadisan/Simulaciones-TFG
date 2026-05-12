@@ -49,7 +49,7 @@ class CasoModelo:
     DW: float = 2.4e-9
     delta: float = DY/DW
     Wref: float = kHill
-    Z0: float = 2.0e-3/Wref #Z0 está en mmol/L, conviero a mol/L y adimensionalizo
+    Z0: float = 2.33e-3/Wref #Z0 fisiológico está en mmol/L, convierto a mol/L y adimensionalizo.
 
 @dataclass
 class ResultadoModelo:
