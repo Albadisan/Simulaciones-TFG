@@ -48,7 +48,8 @@ class CasoModelo:
     DY: float = 1.4e-11
     DW: float = 2.4e-9
     delta: float = DY/DW
-    Z0: float = 2.0
+    Wref: float = kHill
+    Z0: float = 2.0e-3/Wref #Z0 está en mmol/L, conviero a mol/L y adimensionalizo
 
 @dataclass
 class ResultadoModelo:
