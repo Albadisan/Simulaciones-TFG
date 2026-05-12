@@ -15,7 +15,7 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
      1) Sin hemoglobina: $Z_0 = 0$
      2) Estado estacionario: $d/dt = 0$
-     3) Concentración alveolar fija: $\hat{C}_A(x) = hat{C}_A^0$
+     3) Concentración alveolar fija: $\hat{C}_A(x) = \hat{C}_A^0$
      4) No hay difusión axial: $Pe_C \to \inf $
 
     Se resuelve por tanto la ecuación:
