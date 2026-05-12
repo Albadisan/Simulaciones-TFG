@@ -77,9 +77,11 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
      $$\frac{\partial W}{\partial t} + \frac{\partial W}{\partial x} = \frac{1}{\mathrm{Pe}_{C}} \frac{\partial^2 W}{\partial x^2} + \mathrm{Da}_C (C_A^0 − W)$$
 
-     En $x=0$: $\hspace{1cm} C_A (0) = C_{A,in}$, $W(0) = W_{in}$ (Dirichlet en la entrada)
+     Condición inicial : $C_A (x,0) = C_{A,0}(x)$
   
-     En $x=1$: $\hspace{1cm} \frac{dC_A}{dx}(1) = 0, \frac{dW}{dx}(1) = 0$ (Neumann en la salida)
+     En $x=0$: $\hspace{1cm} C_A (0,t) = C_{A,in}$, $W(0,t) = W_{in}$ (Dirichlet en la entrada)
+  
+     En $x=1$: $\hspace{1cm} \frac{dC_A}{dx}(1,t) = 0, \frac{dW}{dx}(1,t) = 0$ (Neumann en la salida)
   
  - MODELO FINAL : simulación final 
 
