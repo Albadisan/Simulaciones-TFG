@@ -44,7 +44,7 @@ class CasoModelo:
     C_in: float = 1.0
     W_in: float = 0.15
     nHill: float = 2.7
-    kHill: float = 4.2e-5
+    kHill: float = 4.2e-5 # En mol/L
     DY: float = 1.4e-11
     DW: float = 2.4e-9
     delta: float = DY/DW
