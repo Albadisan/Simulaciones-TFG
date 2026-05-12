@@ -67,7 +67,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
 - MODELO 4 : Cuarta etapa para llegar a la simulación final. 
   
-    Se imponen 1 hipótesis:
+    Se impone 1 hipótesis:
 
      1) Sin hemoglobina: $Z_0 = 0$
 
@@ -79,21 +79,17 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
      Condición inicial : $C_A (x,0) = C_{A,0}(x)$
   
-     En $x=0$: $\hspace{1cm} C_A (0,t) = C_{A,in}$, $W(0,t) = W_{in}$ (Dirichlet en la entrada)
+     En $x=0$: $\hspace{1cm} C_A (0,t) = C_{A,in} \hspace{1cm} W(0,t) = W_{in}$ (Dirichlet en la entrada)
   
-     En $x=1$: $\hspace{1cm} \frac{dC_A}{dx}(1,t) = 0, \frac{dW}{dx}(1,t) = 0$ (Neumann en la salida)
+     En $x=1$: $\hspace{1cm} \frac{dC_A}{dx}(1,t) = 0 \hspace{1cm} \frac{dW}{dx}(1,t) = 0$ (Neumann en la salida)
   
  - MODELO FINAL : simulación final 
 
     Se añaden las funciones no lineales
    
-    $$
-    \alpha(W) = 1 + 4 Z_0 f'(W)
-    $$
-
-    $$
-    D(W) = 1 + 4 \delta Z_0 f'(W)
-    $$
+    $\alpha(W) = 1 + 4 Z_0 f'(W)$
+  
+    $D(W) = 1 + 4 \delta Z_0 f'(W)$
 
     Donde $f'(W)$ representa la derivada de la función de Hill.
    
