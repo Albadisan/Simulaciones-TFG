@@ -72,4 +72,11 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
   
      En $x=1$: $\hspace{1cm} \frac{d\hat{C}_A}{dx} = 0$, $\frac{d\hat{W}}{dx} = 0$ (Neumann homogénea)
   
-     
+ - MODELO FINAL : simulación final 
+
+    Se añaden las funciones no lineales y se resuelve por fin el sistema:
+
+   $$ \frac{\partial\hat{C}_A}{\partial {\hat{t}}} + r_v\frac{\partial\hat{C}_A}{\partial \hat{x}} = \frac{1}{Pe_A}\frac{\partial^2\hat{C}_A}{\partial x^2} - Da_A(\hat{C}_A -\hat{W})4$$
+
+$$ \hat{\alpha}(\hat{W})\left[\frac{\partial\hat{W}}{\partial {\hat{t}}} + \frac{\partial\hat{W}}{\partial \hat{x}} \right] = \frac{1}{Pe_C}\frac{\partial}{\partial \hat{x}} \left(\hat{D}(\hat{W})\frac{\partial \hat{W}}{\partial \hat{x}} \right) + Da_C(\hat{C}_A -\hat{W})$$
+
