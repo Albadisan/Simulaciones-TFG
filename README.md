@@ -44,9 +44,9 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
      $$\frac{d W}{dx} = \frac{1}{\mathrm{Pe}_{C}} \frac{d^2 W}{dx^2} + \mathrm{Da}_C (C_A^0 − W)$$
   
-     En $x=0$: $W(0) = W_{in}$  (Dirichlet en la entrada)
+     En $x=0$: $\hspace{1cm} W(0) = W_{in} \hspace{1cm}$  (Dirichlet en la entrada)
   
-     En $x=1$: $\frac{d W}{dx}(1) = 0$ (Neumann en la salida)
+     En $x=1$: $\hspace{1cm} \frac{d W}{dx}(1) = 0 \hspace{1cm}$ (Neumann en la salida)
  
 - MODELO 3 : Tercera etapa para llegar a la simulación final. 
   
@@ -61,9 +61,9 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
      
      $$\frac{d W}{dx}= \frac{1}{\mathrm{Pe}_{C}} \frac{d^2 W}{dx^2} + \mathrm{Da}_C (C_A^0 − W)$$
 
-     En $x=0$: $\hspace{1cm} C_A (0) = C_{A,in}$, $W(0) = W_{in}$  (Dirichlet en la entrada)
+     En $x=0$: $\hspace{1cm} C_A (0) = C_{A,in} \hspace{1cm} W(0) = W_{in} \hspace{1cm}$  (Dirichlet en la entrada)
   
-     En $x=1$: $\hspace{1cm} \frac{d C_A}{dx}(1) = 0$, $\frac{d W}{dx}(1) = 0$ (Neumann en la salida)
+     En $x=1$: $\hspace{1cm} \frac{d C_A}{dx}(1) = 0 \hspace{1cm} \frac{d W}{dx}(1) = 0 \hspace{1cm}$ (Neumann en la salida)
 
 - MODELO 4 : Cuarta etapa para llegar a la simulación final. 
   
@@ -79,9 +79,9 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
      Condición inicial : $C_A (x,0) = C_{A,0}(x)$
   
-     En $x=0$: $\hspace{1cm} C_A (0,t) = C_{A,in} \hspace{1cm} W(0,t) = W_{in}$ (Dirichlet en la entrada)
+     En $x=0$: $\hspace{1cm} C_A (0,t) = C_{A,in} \hspace{1cm} W(0,t) = W_{in} \hspace{1cm}$ (Dirichlet en la entrada)
   
-     En $x=1$: $\hspace{1cm} \frac{dC_A}{dx}(1,t) = 0 \hspace{1cm} \frac{dW}{dx}(1,t) = 0$ (Neumann en la salida)
+     En $x=1$: $\hspace{1cm} \frac{\partial C_A}{\partial x}(1,t) = 0 \hspace{1cm} \frac{\partial W}{\partial x}(1,t) = 0 \hspace{1cm}$ (Neumann en la salida)
   
  - MODELO FINAL : simulación final 
 
