@@ -87,10 +87,14 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
     Se añaden las funciones no lineales
    
-     $$ \alpha(W) = 1 + 4 Z_0f'(W)}$$
+    $$
+    \alpha(W) = 1 + 4 Z_0 f'(W)
+    $$
 
-     $$
-       D(W) = 1 + 4 \delta Z_0 f'(W)
-     $$
+    $$
+    D(W) = 1 + 4 \delta Z_0 f'(W)
+    $$
+
+    Donde $f'(W)$ representa la derivada de la función de Hill.
    
     Y se tiene el sistema original que pretendíamos simular.
