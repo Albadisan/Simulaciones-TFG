@@ -76,8 +76,12 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
     Se añaden las funciones no lineales
    
-     $$ \hat{\alpha}(\hat{W}) = 1 + 4 \hat{Z}_0\hat{f}'(\hat{W)} $$
+     $$
+       \hat{\alpha}(\hat{W}) = 1 + 4 \hat{Z}_0\hat{f}'(\hat{W)}
+     $$
 
-     $$ \hat{D}(\hat{W}) = 1 + 4\delta\hat{Z}_0\hat{f}'(\hat{W)}$$
+     $$
+       \hat{D}(\hat{W}) = 1 + 4\delta\hat{Z}_0\hat{f}'(\hat{W)}
+     $$
    
     Y se tiene el sistema original que pretendíamos simular.
