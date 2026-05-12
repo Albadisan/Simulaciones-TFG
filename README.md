@@ -87,9 +87,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
     Se añaden las funciones no lineales
    
-     $$
-       \alpha (W) = 1 + 4Z_0f'(W)
-     $$
+     $$ \alfa(W) = 1 + 4Z_0f'(W)
 
      $$
        D(W) = 1 + 4 \delta Z_0 f'(W)
