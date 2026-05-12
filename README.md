@@ -57,7 +57,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
 
     Se resuelve por tanto el sistema:
 
-     $$r_v \frac{d C}{d x}= \frac{1}{\mathrm{Pe}_{A}}\frac{\partial^2 C}{\partial x^2} - \mathrm{Da}_A(C_A − W)$$
+     $$r_v \frac{d C}{d x}= \frac{1}{\mathrm{Pe}_{A}}\frac{d^2 C}{\partial x^2} - \mathrm{Da}_A(C_A − W)$$
      
      $$\frac{d W}{dx}= \frac{1}{\mathrm{Pe}_{C}} \frac{d^2 W}{dx^2} + \mathrm{Da}_C (C_A^0 − W)$$
 
