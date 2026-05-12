@@ -52,7 +52,7 @@ Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cad
 
      $$\frac{d \hat{W}}{dx}= \frac{1}{Pe_C} \frac{d^2 \hat{W}}{dx^2} + DaC (\hat{C}_A − \hat{W})$$
 
-     En $x=0$: $\hspace{1cm} \hat{C}_A (0) = \hat{C}_{A,in}, \hat{W}(0) = \hat{W}_{in}$
+     En $x=0$: $\hspace{1cm} \hat{C}_A (0) = \hat{C}_{A,in}$, $\hat{W}(0) = \hat{W}_{in}$
   
      En $x=1$: $\hspace{1cm} \frac{d\hat{C}_A}{dx} = 0$, $\frac{d\hat{W}}{dx} = 0$ (Neumann homogénea)
 
