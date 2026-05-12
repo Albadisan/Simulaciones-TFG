@@ -3,7 +3,7 @@ En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Int
 
 La simulación que se pretende hacer es la del sistema:
 
-$$ \frac{\partial\hat{C}_A}{\partial {\hat{t}}} + r_v\frac{\partial\hat{C}_A}{\partial \hat{x}} = \frac{1}{Pe_A}\frac{\partial^2\hat{C}_A}{\partial x^2} - Da_A(\hat{C}_A -\hat{W})4$$
+$$ \frac{\partial\hat{C}_A}{\partial {\hat{t}}} + r_v\frac{\partial\hat{C}_A}{\partial \hat{x}} = \frac{1}{Pe_A}\frac{\partial^2\hat{C}_A}{\partial x^2} - Da_A(\hat{C}_A -\hat{W})$$
 
 $$ \hat{\alpha}(\hat{W})\left[\frac{\partial\hat{W}}{\partial {\hat{t}}} + \frac{\partial\hat{W}}{\partial \hat{x}} \right] = \frac{1}{Pe_C}\frac{\partial}{\partial \hat{x}} \left(\hat{D}(\hat{W})\frac{\partial \hat{W}}{\partial \hat{x}} \right) + Da_C(\hat{C}_A -\hat{W})$$
 
