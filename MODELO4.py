@@ -260,9 +260,11 @@ def simular_modelo4_transitorio(N: int, T: float, dt: float, caso: CasoModelo) -
     for n in range(nt):
         rhs = U / dt + b
         U = solver.solve(rhs)
-
-        C_hist[n+1], W_hist[n+1] = reconstruir_solucion(U, N, caso.C_in, caso.W_in)
-
+       
+        C, W = reconstruir_solucion(U, N, caso.C_in, caso.W_in)
+        C_hist[n + 1, :] = C
+        W_hist[n + 1, :] = W
+       
         error_relativo[n + 1] = np.linalg.norm(U - U_est, ord=np.inf) / denominador
 
     return ResultadoModelo(
