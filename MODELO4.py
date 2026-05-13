@@ -437,10 +437,12 @@ def main():
     ejecutar(N=args.N, T=args.T, dt=args.dt)
 
 def parsear_argumentos():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--N", type=int, default=100)
-    parser.add_argument("--T", type=float, default=4.0)
-    parser.add_argument("--dt", type=float, default=0.01)
+    parser = argparse.ArgumentParser(
+        description="Resuelve el Modelo 4 transitorio lineal acoplado del biochip por diferencias finitas."
+    )
+    parser.add_argument("--N", type=int, default=160, help="Número de subintervalos espaciales. Valor por defecto: 160.")
+    parser.add_argument("--T", type=float, default=4.0, help="Tiempo final adimensional. Valor por defecto: 4.0.")
+    parser.add_argument("--dt", type=float, default=0.0025, help="Paso temporal adimensional. Valor por defecto: 0.0025.")
     return parser.parse_args()
 
 if __name__ == "__main__":
