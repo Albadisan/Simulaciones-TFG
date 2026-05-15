@@ -31,6 +31,12 @@ import argparse
 TIEMPOS_PERFILES_RELATIVOS = (0.0, 0.10, 0.30, 0.60, 1.0)
 POSICIONES_SERIES = (0.25, 0.50, 0.75, 1.00)
 
+# Constantes físicas
+kHill_mol = 4.2e-5 # En mol/L
+Z0_mol = 2.33e-3 #mol/L
+DY: float = 1.4e-11
+DW: float = 2.4e-9
+
 @dataclass(frozen=True)
 class CasoModelo:
     """Parámetros adimensionales de un caso de simulación."""
@@ -44,12 +50,9 @@ class CasoModelo:
     C_in: float = 1.0
     W_in: float = 0.15
     nHill: float = 2.7
-    kHill: float = 4.2e-5 # En mol/L
-    DY: float = 1.4e-11
-    DW: float = 2.4e-9
+    kHill: float = 1 # Adimensional
     delta: float = DY/DW
-    Wref: float = kHill
-    Z0: float = 2.33e-3/Wref #Z0 fisiológico está en mmol/L, convierto a mol/L y adimensionalizo.
+    Z0: float = Z0_mol/kHill_mol #Adimensional
 
 @dataclass
 class ResultadoModelo:
