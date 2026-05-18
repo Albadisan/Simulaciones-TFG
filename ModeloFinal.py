@@ -3,8 +3,8 @@ Modelo Final del biochip alvéolo--capilar
 
 Este script resuelve el sistema:
 
-            C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
-   alfa(W) (W_t +    W_x) = (1/Pe_C)(D(W)W_x)_x + Da_C (C - W),
+             C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
+   alfa(W)  (W_t +    W_x) = (1/Pe_C)(D(W)W_x)_x + Da_C (C - W),
 
 con condiciones de Dirichlet en la entrada y condiciones de Neumann homogéneas
 en la salida. 
@@ -26,16 +26,21 @@ from scipy.sparse import csc_matrix, eye, lil_matrix, diags
 from scipy.sparse.linalg import splu
 from typing import List, Tuple, Iterable
 import argparse
+from pathlib import Path
+import re
 
 # Constantes
-TIEMPOS_PERFILES_RELATIVOS = (0.0, 0.10, 0.30, 0.60, 1.0)
-POSICIONES_SERIES = (0.25, 0.50, 0.75, 1.00)
+DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
+DIRECTORIO_SALIDA_MODELO_FINAL = DIRECTORIO_SCRIPT / "figuras_modelo_final"
+TIEMPOS_PERFILES_RELATIVOS = (0.0, 0.10, 0.30, 0.60, 1.0) # Adimensionalizado
+POSICIONES_SERIES = (0.25, 0.50, 0.75, 1.00) # Adimensionalizado
 
 # Constantes físicas
-kHill_mol = 4.2e-5 # En mol/L
-Z0_mol = 2.33e-3 #mol/L
-DY: float = 1.4e-11
-DW: float = 2.4e-9
+DY = 1.4e-11             # m^2/s
+DW = 2.4e-9              # m^2/s
+DELTA = DY / DW          # Adimensional 
+KHILL_MOL = 4.2e-5       # mol/L  
+Z0_MOL = 2.33e-3         # mol/L  (hemoglobina total típica)
 
 @dataclass(frozen=True)
 class CasoModelo:
@@ -49,10 +54,10 @@ class CasoModelo:
     DaC: float = 3.0
     C_in: float = 1.0
     W_in: float = 0.15
-    nHill: float = 2.7
-    kHill: float = 1 # Adimensional
-    delta: float = DY/DW
-    Z0: float = Z0_mol/kHill_mol #Adimensional
+    nHill: float = 2.7           # Adimensional
+    kHill: float = 1.0           # Adimensional
+    delta: float = DELTA         # Adimensional
+    Z0: float = Z0_MOL/KHILL_MOL # Adimensional
 
 @dataclass
 class ResultadoModelo:
@@ -96,6 +101,26 @@ def calcular_coeficientes_no_lineales(W_vector, caso):
     # D_i = 1 + 4 * Z0 * delta * f'(W_i)
     Ds = 1.0 + 4.0 * caso.Z0 * caso.delta * derivada_funcion_Hill(W_vector,caso)
     return alphas, Ds
+
+# ============================================================
+# Utilidades generales
+# ============================================================
+
+def normalizar_nombre(texto: str) -> str:
+    """Convierte un nombre de caso en una cadena segura para nombres de archivo."""
+
+    texto = texto.lower().strip()
+    texto = re.sub(r"[^a-z0-9áéíóúñü]+", "_", texto)
+    texto = texto.strip("_")
+    return texto or "caso"
+
+
+def guardar_figura(fig: plt.Figure, ruta_base: Path) -> None:
+    """Guarda una figura en PNG y PDF con resolución alta."""
+
+    ruta_base.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(ruta_base.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    fig.savefig(ruta_base.with_suffix(".pdf"), bbox_inches="tight")
 
 # ============================================================
 # Ensamblaje del operador espacial 
@@ -290,7 +315,7 @@ def simular_modelo_final(N: int, T: float, dt: float, caso: CasoModelo,tol_picar
 # Figuras profesionales
 # ============================================================
 
-def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str):
+def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str,  salida: Path):
     """
     Genera una figura 3x1 con mapas espacio-temporales y una barra de color común.
 
@@ -321,8 +346,9 @@ def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str):
         )
     
     plt.colorbar(m, ax=ejes, label=etiqueta)
+    guardar_figura(fig, salida / f"01_mapa_{variable}_3x1")
 
-def plot_perfiles_espaciales(res: ResultadoModelo, variable: str):
+def plot_perfiles_espaciales(res: ResultadoModelo, variable: str, salida: Path):
     """Dibuja perfiles espaciales para varios tiempos fijos."""
 
     if variable not in {"C", "W"}:
@@ -343,7 +369,10 @@ def plot_perfiles_espaciales(res: ResultadoModelo, variable: str):
     plt.title(f"Perfiles espaciales de {variable}: {res.caso.nombre}")
     plt.legend()
 
-def plot_series_temporales(res: ResultadoModelo, variable: str):
+    nombre = normalizar_nombre(res.caso.nombre)
+    guardar_figura(plt, salida / f"02_perfiles_espaciales_{variable}_{nombre}")
+
+def plot_series_temporales(res: ResultadoModelo, variable: str, salida: Path):
     """Dibuja perfiles espaciales para varios tiempos fijos."""
 
     if variable not in {"C", "W"}:
@@ -364,6 +393,61 @@ def plot_series_temporales(res: ResultadoModelo, variable: str):
     plt.title(f"Evolución temporal de {variable} - Caso: {res.caso.nombre}")
     plt.legend()
 
+    nombre = normalizar_nombre(res.caso.nombre)
+    guardar_figura(plt, salida / f"03_series_temporales_{variable}_{nombre}")
+
+
+def barrido_hemoglobina(N: int, T: float, dt: float, caso_base: CasoModelo, salida: Path):
+    """
+    Barrido paramétrico en Z0 (concentración de hemoglobina).
+    
+    Simula desde anemia severa hasta policitemia severa y muestra:
+      - Perfil estacionario de W(x) para cada Z0
+    
+    Los valores de Z0 son adimensionales (Z0_mol / Wref).
+      - Z0 = 0     →  sin hemoglobina  (Modelo 4)
+      - Z0 ~ 44    →  anemia severa    
+      - Z0 ~ 50    →  anemia leve     
+      - Z0 ~ 55    →  fisiológico     
+      - Z0 ~ 60    →  policitemia leve   
+      - Z0 ~ 66    →  policitemia severa    
+    """
+    from dataclasses import replace
+
+    valores_Z0 = [0, 44, 50, 55, 60, 66]
+    etiquetas  = [
+        r"$\hat{Z}_0=0$ (sin Hb, Modelo 4)",
+        r"$\hat{Z}_0=44$ (anemia severa)",
+        r"$\hat{Z}_0=50$ (anemia leve)",
+        r"$\hat{Z}_0=55$ (fisiológico)",
+        r"$\hat{Z}_0=60$ (policitemia leve)",
+        r"$\hat{Z}_0=66$ (policitemia severa)",
+    ]
+    colores = ["#888780", "#B5D4F4", "#378ADD", "#185FA5", "#0E4E87", "#0B1014"]
+
+    resultados = []
+    for z0_val in valores_Z0:
+        caso = replace(caso_base, nombre=f"Z0={z0_val}", Z0=float(z0_val))
+        res  = simular_modelo_final(N, T, dt, caso)
+        resultados.append(res)
+
+    plt.figure()
+
+    # --- Perfil estacionario de W ---
+    for res, etiq, col in zip(resultados, etiquetas, colores):
+        ls = "--" if res.caso.Z0 == 0 else "-"
+        plt.plot(res.x, res.W[-1, :], label=etiq, color=col, linestyle=ls)
+
+    plt.xlabel(r"Posición axial $\hat{x}$")
+    plt.ylabel(r"Oxígeno en sangre $\hat{W}$")
+    plt.title("Efecto de la concentración de hemoglobina $\hat{Z}_0$ sobre $\hat{W}$")
+    plt.legend(fontsize=8)
+    plt.grid(alpha=0.3)
+    plt.legend()
+
+    guardar_figura(plt, salida / f"04_barrido_Hemoglobina")
+
+
 
 # ============================================================
 # Ejecución de casos y guardado de datos
@@ -371,7 +455,7 @@ def plot_series_temporales(res: ResultadoModelo, variable: str):
 
 def definir_casos():
     return [
-        CasoModelo("Base", PeA=20, PeC=20, DaA=3, DaC=3),
+        CasoModelo("Base", PeA=20, PeC=20, DaA=3, DaC=3), # caso didáctico, no el chip Huh real
         CasoModelo("Acoplamiento Alto", PeA=20, PeC=20, DaA=10, DaC=10),
         CasoModelo("Difusión Mayor", PeA=5, PeC=5, DaA=3, DaC=3)
     ]
@@ -379,19 +463,25 @@ def definir_casos():
 def ejecutar(N: int, T: float, dt: float):
     casos = definir_casos()
     resultados = [simular_modelo_final(N, T, dt, c) for c in casos]
+    salida = DIRECTORIO_SALIDA_MODELO_FINAL
+    salida.mkdir(parents=True, exist_ok=True)
     
     # Mapas de calor (3 casos juntos)
-    plot_mapa_3x1(resultados, "C")
-    plot_mapa_3x1(resultados, "W")
+    plot_mapa_3x1(resultados, "C", salida)
+    plot_mapa_3x1(resultados, "W", salida)
     
    
     # Gráficos específicos del primer caso (Base)
     res0 = resultados[0]
-    plot_perfiles_espaciales(res0, "C")
-    plot_perfiles_espaciales(res0, "W")
-    plot_series_temporales(res0, "C")
-    plot_series_temporales(res0, "W")
-   
+    plot_perfiles_espaciales(res0, "C",salida)
+    plot_perfiles_espaciales(res0, "W",salida)
+    plot_series_temporales(res0, "C",salida)
+    plot_series_temporales(res0, "W",salida)
+
+    # Gráfico barrido hemoglobina 
+    barrido_hemoglobina(N, T, dt, casos[0],salida)
+
+    
     
     print("\nSimulación terminada. Abriendo ventanas...")
     plt.show()
