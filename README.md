@@ -21,7 +21,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
     Se imponen 4 hipótesis:
 
      1) Sin hemoglobina: $Z_0 = 0$
-     2) Estado estacionario: $d/dt = 0$
+     2) Estado estacionario: $\partial / \partial t = 0$
      3) Concentración alveolar fija: $C_A(x) = C_A^0$
      4) No hay difusión axial: $Pe_C \to \inf $
 
