@@ -53,7 +53,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
     Se imponen 2 hipótesis:
 
      1) Sin hemoglobina: $Z_0 = 0$
-     2) Estado estacionario: $d/dt = 0$
+     2) Estado estacionario: $\partial / \partial t = 0$
 
     Se resuelve por tanto el sistema:
 
