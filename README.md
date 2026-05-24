@@ -113,4 +113,53 @@ Python 3.14 o superior. Instalar dependencias con:
 
     pip install -r requirements.txt
 
+# GENERACIÓN DE FIGURAS
 
+## MODELO 1
+
+Genera en pantalla:
+
+- Comparación solución analítica vs numérica (N=100 y N=1000).
+- Estudio de convergencia log-log (pendiente obtenida ≈ −1).
+
+## MODELO 2
+
+Genera en pantalla:
+
+- Comparación solución analítica vs numérica.
+- Estudio de convergencia log-log (pendiente obtenida ≈ −2).
+
+## MODELO 3
+
+Genera en pantalla:
+
+- Perfiles estacionarios de \hat{C}_A y \hat{W}.
+
+## MODELO 4
+
+Genera en figuras_modelo4/:
+
+| Archivo | Contenido |
+|---|---|
+| `01_mapa_C_3x1.png` | Mapas espacio-temporales de $C_A$ (3 casos) |
+| `01_mapa_W_3x1.png` | Mapas espacio-temporales de W (3 casos) |
+| `02_perfiles_espaciales_C_base.png` | Perfiles espaciales de $C_A$ (caso base) |
+| `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
+| `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
+| `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
+| `04_convergencia_modelo4_hacia_modelo3.png` | Error relativo de convergencia al estacionario |
+| `05_error_espacial_final_base.png` | Error espacial final respecto al Modelo 3 |
+
+
+## MODELO FINAL
+
+Genera en figuras_modelo_final/:
+
+| Archivo | Contenido |
+|---|---|
+| `01_mapa_C_3x1.png` | Mapas espacio-temporales de $C_A$ (3 casos) |
+| `01_mapa_W_3x1.png` | Mapas espacio-temporales de W (3 casos) |
+| `02_perfiles_espaciales_C_base.png` | Perfiles espaciales de $C_A$ (caso base) |
+| `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
+| `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
+| `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
