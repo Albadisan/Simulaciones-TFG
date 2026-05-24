@@ -1,7 +1,8 @@
-# Simulaciones-TFG
-En el desarrollo de mi TFG "Modelo 1D de Reacción-Advección-Difusión para Intercambio Gaseoso en Biochips Pulmonares: Análisis y Extensiones Fisiológicas" se pretende desarrollar una simulación en Python. Se crea este repositorio para guardar los scripts de cada etapa hasta conseguir la simulación final.
 
-La simulación que se pretende hacer es la del sistema:
+Repositorio que acompaña al Trabajo de Fin de Grado:
+   ### Modelo 1D de Reacción-Advección-Difusión para Intercambio Gaseoso en Biochips Pulmonares: Análisis y Extensiones Fisiológicas
+
+En el desarrollo del TFG se pretende simular en Python el sistema acoplado:
 
 $$
 \frac{\partial \hat{C}_{A}}{\partial \hat{t}} + r_{v}\ \frac{ \partial \hat{C}_A}{\partial \hat{x}}
@@ -12,11 +13,22 @@ $$
  \hat{\alpha}(\hat{W})\left[\frac{\partial\hat{W}}{\partial {\hat{t}}} + \frac{\partial\hat{W}}{\partial \hat{x}} \right] = \frac{1}{\mathrm{Pe}_C}\frac{\partial}{\partial \hat{x}} \left(\hat{D}(\hat{W})\frac{\partial \hat{W}}{\partial \hat{x}} \right) + Da_C(\hat{C}_A -\hat{W})
 $$
 
-Para lograrlo se hace en 4 etapas: se imponen 4 hipótesis al principio y en cada etapa se van relajando hipótesis hasta alcanzar las ecuaciones del modelo que pretendemos simular. De esta forma vamos validando poco a poco las simulaciones.
+La estrategia es relajar hipótesis progresivamente en cuatro etapas, validando cada modelo antes de pasar al siguiente.
 
-Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesivo.
+    Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesivo.
 
-- MODELO 1 : Primera etapa para llegar a la simulación final. 
+# Estructura del repositorio:
+     ├── MODELO1.py                   # Modelo 1: advección–reacción puro.
+     ├── MODELO2.py                   # Modelo 2: advección–difusión–reacción.
+     ├── MODELO3.py                   # Modelo 3: sistema estacionario lineal acoplado.
+     ├── MODELO4.py                   # Modelo 4: sistema transitorio lineal acoplado.
+     ├── ModeloFinal.py               # Modelo final: sistema no lineal con hemoglobina.
+     ├── requirements.txt             # Dependencias Python
+     └── README.md
+
+# MODELOS
+
+- MODELO 1 : Primera etapa. 
   
     Se imponen 4 hipótesis:
 
@@ -31,7 +43,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
   
      $$W(0) = W_{in}$$
 
-- MODELO 2 : Segunda etapa para llegar a la simulación final. 
+- MODELO 2 : Segunda etapa. 
   
     Se imponen 4 hipótesis:
 
@@ -48,7 +60,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
   
      En $x=1$: $\hspace{1cm} \frac{d W}{dx}(1) = 0 \hspace{1cm}$ (Neumann en la salida)
  
-- MODELO 3 : Tercera etapa para llegar a la simulación final. 
+- MODELO 3 : Tercera etapa. 
   
     Se imponen 2 hipótesis:
 
@@ -65,7 +77,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
   
      En $x=1$: $\hspace{1cm} \frac{d C_A}{dx}(1) = 0 \hspace{1cm} \frac{d W}{dx}(1) = 0 \hspace{1cm}$ (Neumann en la salida)
 
-- MODELO 4 : Cuarta etapa para llegar a la simulación final. 
+- MODELO 4 : Cuarta etapa. 
   
     Se impone 1 hipótesis:
 
@@ -83,7 +95,7 @@ Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesiv
   
      En $x=1$: $\hspace{1cm} \frac{\partial C_A}{\partial x}(1,t) = 0 \hspace{1cm} \frac{\partial W}{\partial x}(1,t) = 0 \hspace{1cm}$ (Neumann en la salida)
   
- - MODELO FINAL : simulación final 
+ - MODELO FINAL : simulación final.
 
     Se añaden las funciones no lineales
    
