@@ -106,3 +106,8 @@ La estrategia es relajar hipótesis progresivamente en cuatro etapas, validando 
     Donde $f'(W)$ representa la derivada de la función de Hill.
    
     Y se tiene el sistema original que pretendíamos simular.
+
+# REQUERIMIENTOS
+
+Python 3.14 o superior. Instalar dependencias con:
+   pip install -r requirements.txt
