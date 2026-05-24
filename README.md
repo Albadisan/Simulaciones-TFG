@@ -110,4 +110,7 @@ La estrategia es relajar hipótesis progresivamente en cuatro etapas, validando 
 # REQUERIMIENTOS
 
 Python 3.14 o superior. Instalar dependencias con:
-   pip install -r requirements.txt
+
+    pip install -r requirements.txt
+
+
