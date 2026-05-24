@@ -163,3 +163,21 @@ Genera en figuras_modelo_final/:
 | `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
 | `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
 | `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
+
+
+# PARÁMETROS POR DEFECTO
+
+| Parámetro | Valor | Descripción |
+|---|---|---|
+| `--N` | 160 | Nodos espaciales |
+| `--T` | 4.0 | Tiempo final adimensional |
+| `--dt` | 0.0025 | Paso temporal adimensional |
+| `PeA` | 20 | Número de Péclet alveolar |
+| `PeC` | 20 | Número de Péclet capilar |
+| `DaA` | 3 | Número de Damköhler alveolar |
+| `DaC` | 3 | Número de Damköhler capilar |
+| `Z0` | 55.6 | Concentración adimensional de hemoglobina (fisiológico) |
+
+# REPRODUCIBILIDAD
+
+Las figuras incluidas en la memoria corresponden al commit:
