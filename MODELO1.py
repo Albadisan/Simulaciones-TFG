@@ -14,6 +14,32 @@ Salidas gráficas:
 """
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
+DIRECTORIO_SALIDA_MODELO_1 = DIRECTORIO_SCRIPT / "figuras_modelo1"
+
+# GUARDAR FIGURAS
+
+salida = DIRECTORIO_SALIDA_MODELO_1
+
+def guardar_figura(fig: plt.Figure, ruta_base: Path) -> None:
+    """Guarda una figura en PNG y PDF con resolución alta."""
+
+    ruta_base.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(ruta_base.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    fig.savefig(ruta_base.with_suffix(".pdf"), bbox_inches="tight")
+
+# TAMAÑOS GENERALES
+
+plt.rcParams.update({
+    'font.size': 13,
+    'axes.labelsize': 16,      # Etiquetas de ejes (ej: "$\hat{x}$")
+    'axes.titlesize': 18,      # Títulos
+    'legend.fontsize': 13,     # Leyendas
+    'xtick.labelsize': 14,     # ← NÚMEROS en eje X
+    'ytick.labelsize': 14,     # ← NÚMEROS en eje Y
+})
 
 # ==========================================
 # DEFINICIÓN DE PARÁMETROS ADIMENSIONALES
@@ -79,7 +105,7 @@ plt.plot(
     x_exact, 
     W_exact, 
     'k-', 
-    label='Solución analítica de Ec. 39', 
+    label='Solución analítica', 
     linewidth=2)
 
 # Gráfica solución para N=100
@@ -99,8 +125,10 @@ plt.plot(
 plt.title('Comparación de Soluciones')
 plt.xlabel('$\hat{x}$')
 plt.ylabel('$\hat{W}(\hat{x})$')
-plt.legend()
-plt.grid(True)
+plt.legend(fontsize=12)
+plt.grid(True,alpha=0.3)
+guardar_figura(plt, salida/"01_Solucion" )
+
 
 # ==========================================
 # ESTUDIO DE CONVERGENCIA
@@ -164,4 +192,5 @@ plt.legend()
 plt.grid(True, which="both", ls="--")
 
 plt.tight_layout()
+guardar_figura(plt, salida/"02_Convergencia" )
 plt.show()
