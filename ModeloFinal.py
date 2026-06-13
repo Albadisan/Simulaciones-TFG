@@ -35,6 +35,15 @@ from pathlib import Path
 import re
 from dataclasses import replace
 
+plt.rcParams.update({
+    'font.size': 13,
+    'axes.labelsize': 14,      # Etiquetas de ejes (ej: "$\hat{x}$")
+    'axes.titlesize': 14,      # Títulos
+    'legend.fontsize': 13,     # Leyendas
+    'xtick.labelsize': 14,     # ← NÚMEROS en eje X
+    'ytick.labelsize': 14,     # ← NÚMEROS en eje Y
+})
+
 # Constantes
 DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
 DIRECTORIO_SALIDA_MODELO_FINAL = DIRECTORIO_SCRIPT / "figuras_modelo_final"
@@ -600,8 +609,8 @@ def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str,  salida: Pat
         ax.set_ylabel(r"$\hat x$")
         ax.set_title(
             f"{titulo_variable}: {res.caso.nombre} "
-            f"(PeA={res.caso.PeA:g}, PeC={res.caso.PeC:g}, "
-            f"DaA={res.caso.DaA:g}, DaC={res.caso.DaC:g})"
+            f"(PeA={res.caso.PeA:g}, PeC={res.caso.PeC:g},"
+            f"DaA={res.caso.DaA:g}, DaC={res.caso.DaC:g})", fontsize=14
         )
     
     plt.colorbar(m, ax=ejes, label=etiqueta)
