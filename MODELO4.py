@@ -1,6 +1,9 @@
 """
 Modelo 4 del biochip alvéolo--capilar: sistema transitorio lineal acoplado
 
+"""
+Modelo 4 del biochip alvéolo--capilar: sistema transitorio lineal acoplado
+
 Este script resuelve el sistema:
 
    C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
@@ -21,15 +24,32 @@ Salidas gráficas principales:
     8) Error espacial final respecto al estado estacionario.
 
 """
+from __future__ import annotations
+
+import argparse
+import csv
+import re
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, Iterable, List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
-from dataclasses import dataclass
 from scipy.sparse import csc_matrix, eye, lil_matrix
 from scipy.sparse.linalg import splu
-from typing import List, Tuple, Iterable
-import argparse
 
+plt.rcParams.update({
+    'font.size': 13,
+    'axes.labelsize': 16,      # Etiquetas de ejes (ej: "$\hat{x}$")
+    'axes.titlesize': 18,      # Títulos
+    'legend.fontsize': 13,     # Leyendas
+    'xtick.labelsize': 14,     # ← NÚMEROS en eje X
+    'ytick.labelsize': 14,     # ← NÚMEROS en eje Y
+})
+
+
+DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
+DIRECTORIO_SALIDA_MODELO4 = DIRECTORIO_SCRIPT / "figuras_modelo4"
 # Constantes
 TIEMPOS_PERFILES_RELATIVOS = (0.0, 0.10, 0.30, 0.60, 1.0)
 POSICIONES_SERIES = (0.25, 0.50, 0.75, 1.00)
@@ -63,6 +83,21 @@ class ResultadoModelo:
 # ============================================================
 # Utilidades generales
 # ============================================================
+
+def normalizar_nombre(texto: str) -> str:
+    """Convierte un nombre de caso en una cadena segura para nombres de archivo."""
+
+    texto = texto.lower().strip()
+    texto = re.sub(r"[^a-z0-9áéíóúñü]+", "_", texto)
+    texto = texto.strip("_")
+    return texto or "caso"
+
+def guardar_figura(fig: plt.Figure, ruta_base: Path) -> None:
+    """Guarda una figura en PNG y PDF con resolución alta."""
+
+    ruta_base.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(ruta_base.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    fig.savefig(ruta_base.with_suffix(".pdf"), bbox_inches="tight")
 
 def indices_mas_cercanos(malla: np.ndarray, valores: Iterable[float]) -> List[int]:
     return [int(np.argmin(np.abs(malla - valor))) for valor in valores]
@@ -260,11 +295,11 @@ def simular_modelo4_transitorio(N: int, T: float, dt: float, caso: CasoModelo) -
     for n in range(nt):
         rhs = U / dt + b
         U = solver.solve(rhs)
-       
+
         C, W = reconstruir_solucion(U, N, caso.C_in, caso.W_in)
         C_hist[n + 1, :] = C
         W_hist[n + 1, :] = W
-       
+
         error_relativo[n + 1] = np.linalg.norm(U - U_est, ord=np.inf) / denominador
 
     return ResultadoModelo(
@@ -282,7 +317,7 @@ def simular_modelo4_transitorio(N: int, T: float, dt: float, caso: CasoModelo) -
 # --- FUNCIONES DE GRÁFICOS ---
 ###############################
 
-def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str):
+def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str,salida: Path):
     """
     Genera una figura 3x1 con mapas espacio-temporales y una barra de color común.
 
@@ -308,11 +343,13 @@ def plot_mapa_3x1(resultados: List[ResultadoModelo], variable: str):
         ax.set_ylabel(r"$\hat x$")
         ax.set_title( f"{titulo_variable}: {res.caso.nombre} "
                       f"(PeA={res.caso.PeA:g}, PeC={res.caso.PeC:g}, "
-                      f"DaA={res.caso.DaA:g}, DaC={res.caso.DaC:g})"
+                      f"DaA={res.caso.DaA:g}, DaC={res.caso.DaC:g})", fontsize=14
                      )
+    
     plt.colorbar(m, ax=ejes, label=etiqueta_barra)
+    guardar_figura(fig, salida / f"01_mapa_{variable}_3x1")
 
-def plot_perfiles_espaciales(res: ResultadoModelo, variable: str):
+def plot_perfiles_espaciales(res: ResultadoModelo, variable: str, salida: Path):
     """Dibuja perfiles espaciales para varios tiempos fijos."""
 
     if variable not in {"C", "W"}:
@@ -339,8 +376,11 @@ def plot_perfiles_espaciales(res: ResultadoModelo, variable: str):
     plt.title(f"Perfiles espaciales de {variable} - Caso: {res.caso.nombre}")
     plt.legend()
 
+    nombre = normalizar_nombre(res.caso.nombre)
+    guardar_figura(plt, salida / f"02_perfiles_espaciales_{variable}_{nombre}")
 
-def plot_series_temporales(res: ResultadoModelo, variable: str):
+
+def plot_series_temporales(res: ResultadoModelo, variable: str,salida: Path):
     """Dibuja la evolución temporal para varias posiciones fijas."""
 
     if variable not in {"C", "W"}:
@@ -361,8 +401,11 @@ def plot_series_temporales(res: ResultadoModelo, variable: str):
     plt.title(f"Evolución temporal de {variable} - Caso: {res.caso.nombre}")
     plt.legend()
 
+    nombre = normalizar_nombre(res.caso.nombre)
+    guardar_figura(plt, salida / f"03_series_temporales_{variable}_{nombre}")
 
-def plot_convergencia(resultados: List[ResultadoModelo]):
+
+def plot_convergencia(resultados: List[ResultadoModelo], salida: Path):
     """Dibuja el error relativo de convergencia."""
     plt.figure(figsize=(7.2, 4.8))
 
@@ -375,28 +418,35 @@ def plot_convergencia(resultados: List[ResultadoModelo]):
     plt.grid(True, which="both", alpha=0.3)
     plt.legend()
 
+    guardar_figura(plt, salida / "04_convergencia_modelo4_hacia_modelo3")
 
-def plot_error_final(res: ResultadoModelo):
+def plot_error_final(res: ResultadoModelo, salida: Path):
     """Dibuja el error espacial final respecto al estado estacionario."""
 
     error_C = np.abs(res.C[-1, :] - res.C_est)
     error_W = np.abs(res.W[-1, :] - res.W_est)
 
-    fig, ejes = plt.subplots(2, 1, figsize=(7.2, 6.2), sharex=True)
+    fig, ejes = plt.subplots(1, 2, figsize=(14, 4), sharex=True)
 
-    ejes[0].semilogy(res.x, error_C, color='blue')
+    # Gráfica de error en C
     ejes[0].semilogy(res.x, error_C)
     ejes[0].set_ylabel(r"$|\hat C_A(T,\hat x)-\hat C_{A,\mathrm{st}}(\hat x)|$")
-    ejes[0].set_title(f"Error espacial final: {res.caso.nombre}")
     ejes[0].grid(True, which="both", alpha=0.3)
-
+    
+    # Gráfica de error en W
     ejes[1].semilogy(res.x, error_W)
     ejes[1].set_xlabel(r"$\hat x$")
     ejes[1].set_ylabel(r"$|\hat W(T,\hat x)-\hat W_{\mathrm{st}}(\hat x)|$")
     ejes[1].grid(True, which="both", alpha=0.3)
+    
+    # Título centrado en toda la figura
+    fig.suptitle(f"Error espacial final: {res.caso.nombre}")
 
     for ax in ejes: ax.grid(True, which="both", alpha=0.3)
     fig.tight_layout()
+
+    nombre = normalizar_nombre(res.caso.nombre)
+    guardar_figura(plt, salida / f"05_error_espacial_final_{nombre}")
 
 # ============================================================
 # Ejecución de casos y guardado de datos
@@ -413,26 +463,29 @@ def definir_casos():
     ]
 
 def ejecutar(N: int, T: float, dt: float) -> None:
+
+    salida = DIRECTORIO_SALIDA_MODELO4
+    salida.mkdir(parents=True, exist_ok=True)
+
     casos = definir_casos()
     resultados = [simular_modelo4_transitorio(N, T, dt, c) for c in casos]
     
     # Mapas de calor (3 casos juntos)
-    plot_mapa_3x1(resultados, "C")
-    plot_mapa_3x1(resultados, "W")
+    plot_mapa_3x1(resultados, "C", salida)
+    plot_mapa_3x1(resultados, "W", salida)
     
     # Convergencia (Todos los casos en una gráfica)
-    plot_convergencia(resultados)
+    plot_convergencia(resultados,salida)
     
     # Gráficos específicos del primer caso (Base)
     res0 = resultados[0]
-    plot_perfiles_espaciales(res0, "C")
-    plot_perfiles_espaciales(res0, "W")
-    plot_series_temporales(res0, "C")
-    plot_series_temporales(res0, "W")
-    plot_error_final(res0)
+    plot_perfiles_espaciales(res0, "C", salida)
+    plot_perfiles_espaciales(res0, "W", salida)
+    plot_series_temporales(res0, "C", salida)
+    plot_series_temporales(res0, "W", salida)
+    plot_error_final(res0, salida)
     
     print("\nSimulación terminada. Abriendo ventanas...")
-    plt.show() 
 
 def main():
     args = parsear_argumentos()
@@ -445,6 +498,7 @@ def parsear_argumentos():
     parser.add_argument("--N", type=int, default=160, help="Número de subintervalos espaciales. Valor por defecto: 160.")
     parser.add_argument("--T", type=float, default=4.0, help="Tiempo final adimensional. Valor por defecto: 4.0.")
     parser.add_argument("--dt", type=float, default=0.0025, help="Paso temporal adimensional. Valor por defecto: 0.0025.")
+
     return parser.parse_args()
 
 if __name__ == "__main__":
