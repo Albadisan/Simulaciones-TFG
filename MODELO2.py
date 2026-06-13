@@ -1,4 +1,3 @@
-
 """
 Modelo 2 del biochip alvéolo--capilar: advección-reacción-difusión
 
@@ -18,6 +17,31 @@ Salidas gráficas:
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.linalg import solve_banded
+from pathlib import Path
+
+DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
+DIRECTORIO_SALIDA_MODELO_2 = DIRECTORIO_SCRIPT / "figuras_modelo2"
+
+# GUARDAR FIGURAS
+
+salida = DIRECTORIO_SALIDA_MODELO_2
+
+def guardar_figura(fig: plt.Figure, ruta_base: Path) -> None:
+    """Guarda una figura en PNG y PDF con resolución alta."""
+
+    ruta_base.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(ruta_base.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    fig.savefig(ruta_base.with_suffix(".pdf"), bbox_inches="tight")
+
+
+plt.rcParams.update({
+    'font.size': 13,
+    'axes.labelsize': 16,      # Etiquetas de ejes (ej: "$\hat{x}$")
+    'axes.titlesize': 18,      # Títulos
+    'legend.fontsize': 13,     # Leyendas
+    'xtick.labelsize': 14,     # ← NÚMEROS en eje X
+    'ytick.labelsize': 14,     # ← NÚMEROS en eje Y
+})
 
 # ============================================================
 # PARÁMETROS ADIMENSIONALES
@@ -156,9 +180,9 @@ def solucion_numerica(N, PeC, DaC, CA0, Win):
 
         rhs[i] = b
 
-    # ------------------------------------------------------------------------------------------------------------------------------------------------------
-    # Nodo i = N => a_menos W_{N-1} + a_0 W_N + a_mas W_{N+1} = -DaC CA0 dx^2 => (usando W_{N-1}=W_{N+1}) (a_menos + a_mas)W_{N-1} + a_0 W_N = -DaC CA0 dx^2 
-    # ------------------------------------------------------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------------------------------------------------
+    # Nodo i = N => a_menos W_{N-1} + a_0 W_N + a_mas W_{N+1} = -DaC CA0 dx^2 => (usando W_{N-1}=W_{N+1}) (a_menos + a_mas)W_{N-1} + a_0 W_N = -DaC CA0 dx^2
+    # ---------------------------------------------------------------------------------------------------------------------------------------------------
 
     diag_infer[M-1] = a_menos + a_mas
     diag[M-1]  = a_0
@@ -225,6 +249,8 @@ plt.title('Modelo 2: advección–difusión–reacción')
 plt.legend()
 plt.grid(True)
 
+guardar_figura(plt, salida/"01_Solucion" )
+
 # ============================================================
 # ESTUDIO DE CONVERGENCIA
 # ============================================================
@@ -234,7 +260,7 @@ plt.grid(True)
 
       Se asume que el error es proporcional a 1/N por usar upwind
 
-         E(N) = C/N^2 -> log_10 (E) = log_10 (C) - 2log_10 (N)  (y = b - 2x    función del error a escala logarítmica con pendiente esperada -2)
+         E(N) = C/N^2 -> log_10 (E) = log_10 (C) - 2log_10 (N)  (y = b - x    función del error a escala logarítmica con pendiente esperada -2)
 '''
 
 N_vals = np.array([10, 20, 40, 80, 160, 320, 640, 1280, 2560])
@@ -297,5 +323,7 @@ plt.legend()
 plt.grid(True, which="both", ls="--")
 
 plt.tight_layout()
-plt.show()
+guardar_figura(plt, salida/"02_Convergencia" )
+
+
 
