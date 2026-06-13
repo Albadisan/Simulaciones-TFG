@@ -17,7 +17,34 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.sparse import csc_matrix, eye, lil_matrix
+from typing import Dict, Iterable, List, Tuple
 from scipy.sparse.linalg import splu
+from pathlib import Path
+
+
+DIRECTORIO_SCRIPT = Path(__file__).resolve().parent
+DIRECTORIO_SALIDA_MODELO_3 = DIRECTORIO_SCRIPT / "figuras_modelo3"
+
+# GUARDAR FIGURAS
+
+salida = DIRECTORIO_SALIDA_MODELO_3
+
+def guardar_figura(fig: plt.Figure, ruta_base: Path) -> None:
+    """Guarda una figura en PNG y PDF con resolución alta."""
+
+    ruta_base.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(ruta_base.with_suffix(".png"), dpi=300, bbox_inches="tight")
+    fig.savefig(ruta_base.with_suffix(".pdf"), bbox_inches="tight")
+
+
+plt.rcParams.update({
+    'font.size': 13,
+    'axes.labelsize': 16,      # Etiquetas de ejes (ej: "$\hat{x}$")
+    'axes.titlesize': 18,      # Títulos
+    'legend.fontsize': 13,     # Leyendas
+    'xtick.labelsize': 14,     # ← NÚMEROS en eje X
+    'ytick.labelsize': 14,     # ← NÚMEROS en eje Y
+})
 
 # ============================================================
 # Definición de parámetros y estructuras de datos
@@ -128,10 +155,10 @@ def vector_contorno(N: int, dx: float, caso: CasoModelo, C_entrada: float, W_ent
     b = np.zeros(2 * N, dtype=float)
 
     # Contribuciones del nodo C_0 en la ecuación de C_1.
-    b[0] += (caso.rv / dx + DA / dx**2) * C_entrada
+    b[0] += (caso.rv / dx + DA / dx**2) * C_entrada # representa el nodo físico 1
 
     # Contribuciones del nodo W_0 en la ecuación de W_1.
-    b[N] += (1.0 / dx + DC / dx**2) * W_entrada
+    b[N] += (1.0 / dx + DC / dx**2) * W_entrada # representa el nodo físico N+1
 
     return b
 
@@ -190,4 +217,4 @@ plt.grid(True, alpha=0.3)
 plt.legend()
 plt.ylim(0, 1.1)
 
-plt.show()
+guardar_figura(plt, salida/"01_Solucion" )
