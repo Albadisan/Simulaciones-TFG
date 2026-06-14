@@ -1,5 +1,4 @@
 
-Repositorio que acompaña al Trabajo de Fin de Grado:
    ### Modelo 1D de Reacción-Advección-Difusión para Intercambio Gaseoso en Biochips Pulmonares: Análisis y Extensiones Fisiológicas
 
 Repositorio de código científico que acompaña al Trabajo de Fin de Grado (TFG). En este proyecto se simula el sistema acoplado transitorio y no lineal para el transporte de gases en un biochip alvéolo-capilar, relajando hipótesis de forma progresiva en cuatro etapas para garantizar la validación del esquema numérico.
