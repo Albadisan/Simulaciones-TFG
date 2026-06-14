@@ -117,10 +117,13 @@ Python 3.14 o superior. Instalar dependencias con:
 
 ## MODELO 1
 
-Genera en pantalla:
+Genera en /figuras_modelo1:
 
-- Comparación solución analítica vs numérica (N=100 y N=1000).
-- Estudio de convergencia log-log (pendiente obtenida ≈ −1).
+| Archivo / Visualización | Contenido |
+|---|---|
+|![Solución modelo 1](figuras_modelo1/01_Solucion.png)|Comparación solución analítica vs numérica (N=100 y N=1000).|
+|![Solución modelo 1](figuras_modelo1/02_Convergencia.png)|Estudio de convergencia log-log (pendiente obtenida ≈ −1).|
+
 
 ## MODELO 2
 
