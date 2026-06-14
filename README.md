@@ -127,36 +127,41 @@ Genera en /figuras_modelo1:
 | Archivo / Visualización | Contenido |
 |---|---|
 |![Solución modelo 1](figuras_modelo1/01_Solucion.png)|Comparación solución analítica vs numérica (N=100 y N=1000).|
-|![Solución modelo 1](figuras_modelo1/02_Convergencia.png)|Estudio de convergencia log-log (pendiente obtenida ≈ −1).|
+|![Convergencia modelo 1](figuras_modelo1/02_Convergencia.png)|Estudio de convergencia log-log (pendiente obtenida ≈ −1).|
 
 
 ## MODELO 2
 
-Genera en pantalla:
+Genera en /figuras_modelo3:
 
-- Comparación solución analítica vs numérica.
-- Estudio de convergencia log-log (pendiente obtenida ≈ −2).
+| Archivo / Visualización | Contenido |
+|---|---|
+|![Solución modelo 2](figuras_modelo2/01_Solucion.png)|Comparación solución analítica vs numérica.|
+|![Convergencia modelo 2](figuras_modelo2/02_Convergencia.png)|Estudio de convergencia log-log (pendiente obtenida ≈ −2).|
+
 
 ## MODELO 3
 
-Genera en pantalla:
+Genera en /figuras_modelo3:
 
-- Perfiles estacionarios de \hat{C}_A y \hat{W}.
+| Archivo / Visualización | Contenido |
+|---|---|
+|![Solución modelo 3](figuras_modelo3/01_Solucion.png)|Perfiles estacionarios de \hat{C}_A y \hat{W}.|
 
 ## MODELO 4
 
 Genera en figuras_modelo4/:
 
-| Archivo | Contenido |
+| Archivo / Visualización | Contenido |
 |---|---|
-| `01_mapa_C_3x1.png` | Mapas espacio-temporales de $C_A$ (3 casos) |
-| `01_mapa_W_3x1.png` | Mapas espacio-temporales de W (3 casos) |
-| `02_perfiles_espaciales_C_base.png` | Perfiles espaciales de $C_A$ (caso base) |
-| `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
-| `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
-| `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
-| `04_convergencia_modelo4_hacia_modelo3.png` | Error relativo de convergencia al estacionario |
-| `05_error_espacial_final_base.png` | Error espacial final respecto al Modelo 3 |
+| ![Mapa C](figuras_modelo4/01_mapa_C_3x1.png) | Mapas espacio-temporales de $C_A$ (3 casos) |
+| ![Mapa W](figuras_modelo4/01_mapa_W_3x1.png) | Mapas espacio-temporales de W (3 casos) |
+| ![Perfil espacial C caso base](figuras_modelo4/02_perfiles_espaciales_C_base.png) | Perfiles espaciales de $C_A$ (caso base) |
+| ![Perfil espacial W caso base](figuras_modelo4/02_perfiles_espaciales_W_base.png) | Perfiles espaciales de W (caso base) |
+| ![Serie temporal C caso base](figuras_modelo4/03_series_temporales_C_base.png) | Series temporales de $C_A$ (caso base) |
+| ![Serie temporal W caso base](figuras_modelo4/03_series_temporales_W_base.png) | Series temporales de W (caso base) |
+| ![Convergencia al modelo 3](figuras_modelo4/04_convergencia_modelo4_hacia_modelo3.png) | Error relativo de convergencia al estacionario |
+| ![Error espacial final respecto modelo 3](figuras_modelo4/05_error_espacial_final_base.png) | Error espacial final respecto al Modelo 3 |
 
 
 ## MODELO FINAL
