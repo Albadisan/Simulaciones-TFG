@@ -22,6 +22,14 @@ $$
     ```bash
        pip install -r requirements.txt
 
+    Para reproducir las simulaciones y regenerar todas las figuras que aparecen en la memoria del TFG, ejecuta los scripts en tu consola en     el siguiente orden secuencial:
+    ```bash
+      python MODELO1.py
+      python MODELO2.py
+      python MODELO3.py
+      python MODELO4.py
+      python ModeloFinal.py
+
 # Estructura del repositorio:
      ├── figuras_modelo1              # Figuras modelo 1: advección–reacción puro.
      ├── figuras_modelo2              # Figuras modelo 2: advección–difusión–reacción.
@@ -123,7 +131,7 @@ Python 3.14 o superior. Instalar dependencias con:
 
     pip install -r requirements.txt
 
-# GENERACIÓN DE FIGURAS
+# RESULTADOS GRÁFICOS
 
 ## MODELO 1
 
@@ -197,6 +205,3 @@ Genera en figuras_modelo_final/:
 | `DaC` | 3 | Número de Damköhler capilar |
 | `Z0` | 55.6 | Concentración adimensional de hemoglobina (fisiológico) |
 
-# REPRODUCIBILIDAD
-
-Las figuras incluidas en la memoria corresponden al commit:
