@@ -39,7 +39,7 @@ $$
      ├── MODELO2.py                   # Modelo 2: advección–difusión–reacción.
      ├── MODELO3.py                   # Modelo 3: sistema estacionario lineal acoplado.
      ├── MODELO4.py                   # Modelo 4: sistema transitorio lineal acoplado.
-     ├── ModeloFinal.py               # Modelo final: sistema no lineal con hemoglobina.
+     ├── ModeloFinal.py               # Modelo final: sistema transitorio no lineal con hemoglobina.
      ├── requirements.txt             # Dependencias Python
      └── README.md
 
