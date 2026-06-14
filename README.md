@@ -18,6 +18,11 @@ La estrategia es relajar hipótesis progresivamente en cuatro etapas, validando 
     Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesivo.
 
 # Estructura del repositorio:
+     ├── figuras_modelo1              # Figuras modelo 1: advección–reacción puro.
+     ├── figuras_modelo2              # Figuras modelo 2: advección–difusión–reacción.
+     ├── figuras_modelo3              # Figuras modelo 3: sistema estacionario lineal acoplado.
+     ├── figuras_modelo4              # Figuras modelo 4: sistema transitorio lineal acoplado.
+     ├── figuras_modelo_final         # Figuras modelo final: sistema no lineal con hemoglobina.
      ├── MODELO1.py                   # Modelo 1: advección–reacción puro.
      ├── MODELO2.py                   # Modelo 2: advección–difusión–reacción.
      ├── MODELO3.py                   # Modelo 3: sistema estacionario lineal acoplado.
