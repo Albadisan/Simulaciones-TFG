@@ -2,6 +2,8 @@
 Repositorio que acompaña al Trabajo de Fin de Grado:
    ### Modelo 1D de Reacción-Advección-Difusión para Intercambio Gaseoso en Biochips Pulmonares: Análisis y Extensiones Fisiológicas
 
+Repositorio de código científico que acompaña al Trabajo de Fin de Grado (TFG). En este proyecto se simula el sistema acoplado transitorio y no lineal para el transporte de gases en un biochip alvéolo-capilar, relajando hipótesis de forma progresiva en cuatro etapas para garantizar la validación del esquema numérico.
+
 En el desarrollo del TFG se pretende simular en Python el sistema acoplado:
 
 $$
@@ -12,8 +14,6 @@ $$
 $$ 
  \hat{\alpha}(\hat{W})\left[\frac{\partial\hat{W}}{\partial {\hat{t}}} + \frac{\partial\hat{W}}{\partial \hat{x}} \right] = \frac{1}{\mathrm{Pe}_C}\frac{\partial}{\partial \hat{x}} \left(\hat{D}(\hat{W})\frac{\partial \hat{W}}{\partial \hat{x}} \right) + Da_C(\hat{C}_A -\hat{W})
 $$
-
-La estrategia es relajar hipótesis progresivamente en cuatro etapas, validando cada modelo antes de pasar al siguiente.
 
     Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesivo.
 
