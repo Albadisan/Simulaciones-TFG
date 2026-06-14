@@ -208,4 +208,5 @@ Genera en figuras_modelo_final/:
 # TRAZABILIDAD Y CITACIÓN CIENTÍFICA
 
 **Commit asociado a la memoria:** `1bf9ca2`
-* **DOI del Repositorio:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20691105.svg)](https://doi.org/10.5281/zenodo.20691105)
+
+**DOI del Repositorio:** [![DOI](https://zenodo.org/badge/1235796656.svg)](https://doi.org/10.5281/zenodo.20691104)
