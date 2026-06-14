@@ -205,3 +205,6 @@ Genera en figuras_modelo_final/:
 | `DaC` | 3 | Número de Damköhler capilar |
 | `Z0` | 55.6 | Concentración adimensional de hemoglobina (fisiológico) |
 
+# TRAZABILIDAD Y CITACIÓN CIENTÍFICA
+
+**Commit asociado a la memoria:** `1bf9ca2`
