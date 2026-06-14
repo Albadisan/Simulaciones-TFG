@@ -170,14 +170,14 @@ Genera en figuras_modelo_final/:
 
 | Archivo | Contenido |
 |---|---|
-| `01_mapa_C_3x1.png` | Mapas espacio-temporales de $C_A$ (3 casos) |
-| `01_mapa_W_3x1.png` | Mapas espacio-temporales de W (3 casos) |
-| `02_perfiles_espaciales_C_base.png` | Perfiles espaciales de $C_A$ (caso base) |
-| `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
-| `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
-| `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
-| `04_barrido_hemoglobina.png` | Barrido de la hemoglobina |
-| `05_validacion_Z0_cero.png` | Validación frente a Modelo 4 |
+| ![Mapa C](figuras_modelo_final/01_mapa_C_3x1.png) | Mapas espacio-temporales de $C_A$ (3 casos) |
+| ![Mapa W](figuras_modelo_final/01_mapa_W_3x1.png) | Mapas espacio-temporales de W (3 casos) |
+| ![Perfil espacial C caso base](figuras_modelo_final/02_perfiles_espaciales_C_base.png) | Perfiles espaciales de $C_A$ (caso base) |
+| ![Perfil espacial W caso base](figuras_modelo_final/02_perfiles_espaciales_W_base.png) | Perfiles espaciales de W (caso base) |
+| ![Serie temporal C caso base](figuras_modelo_final/03_series_temporales_C_base.png) | Series temporales de $C_A$ (caso base) |
+| ![Serie temporal C caso base](figuras_modelo_final/03_series_temporales_W_base.png) | Series temporales de W (caso base) |
+| ![Barrido hemoglobina](figuras_modelo_final/04_barrido_hemoglobina.png) | Barrido de la hemoglobina |
+| ![Validación Z0 cero](figuras_modelo4/05_validacion_Z0_cero.png) | Validación frente a Modelo 4 |
 
 # PARÁMETROS POR DEFECTO
 
