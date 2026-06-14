@@ -17,11 +17,10 @@ $$
 
     Nota: Todas las variables son adimensionales; se omite el sombrero en lo sucesivo.
 
-# Instrucciones y Comandos de Ejecución
-
-Para preparar el entorno de Python e instalar todas las librerías científicas necesarias, ejecuta en tu terminal:
-```bash
-pip install -r requirements.txt
+# Instrucciones y comandos de ejecución:
+    Para preparar el entorno de Python e instalar todas las librerías científicas necesarias, ejecuta en tu terminal:
+    ```bash
+       pip install -r requirements.txt
 
 # Estructura del repositorio:
      ├── figuras_modelo1              # Figuras modelo 1: advección–reacción puro.
