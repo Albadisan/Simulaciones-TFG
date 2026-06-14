@@ -163,7 +163,8 @@ Genera en figuras_modelo_final/:
 | `02_perfiles_espaciales_W_base.png` | Perfiles espaciales de W (caso base) |
 | `03_series_temporales_C_base.png` | Series temporales de $C_A$ (caso base) |
 | `03_series_temporales_W_base.png` | Series temporales de W (caso base) |
-
+| `04_barrido_hemoglobina.png` | Barrido de la hemoglobina |
+| `05_validacion_Z0_cero.png` | Validación frente a Modelo 4 |
 
 # PARÁMETROS POR DEFECTO
 
