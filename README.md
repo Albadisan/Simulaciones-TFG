@@ -132,7 +132,7 @@ Genera en /figuras_modelo1:
 
 ## MODELO 2
 
-Genera en /figuras_modelo3:
+Genera en /figuras_modelo2:
 
 | Archivo / Visualización | Contenido |
 |---|---|
