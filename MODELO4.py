@@ -1,9 +1,6 @@
 """
 Modelo 4 del biochip alvéolo--capilar: sistema transitorio lineal acoplado
 
-"""
-Modelo 4 del biochip alvéolo--capilar: sistema transitorio lineal acoplado
-
 Este script resuelve el sistema:
 
    C_t + rv C_x = (1/Pe_A)C_xx + Da_A (C - W),
