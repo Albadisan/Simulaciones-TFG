@@ -386,7 +386,7 @@ def plot_series_temporales(res: ResultadoModelo, variable: str,salida: Path):
     if variable not in {"C", "W"}:
         raise ValueError("La variable debe ser 'C' o 'W'.")
     
-    datos, est = datos_variable(res, variable)
+    datos, estacionario = datos_variable(res, variable)
     etiqueta = r"$\hat C_A(\hat t,\hat x_j)$" if variable == "C" else r"$\hat W(\hat t,\hat x_j)$"
 
     plt.figure()
@@ -395,6 +395,7 @@ def plot_series_temporales(res: ResultadoModelo, variable: str,salida: Path):
 
     for idx in indices:
         plt.plot(res.t, datos[:, idx], label=f"x={res.x[idx]:.2f}")
+        plt.axhline(estacionario[idx], linestyle=":", linewidth=1.0)
 
     plt.xlabel(r"$\hat t$")
     plt.ylabel(etiqueta)
