@@ -300,7 +300,7 @@ def simular_modelo_final(N: int, T: float, dt: float, caso: CasoModelo,tol_picar
 
     En cada paso temporal se resuelve
                                                            ( I      0  )
-        (A/dt + L(D)) U^{n+1} = A/dt*U^n + b.    Donde A = (           )
+        (M/dt + L(D)) U^{n+1} = M/dt*U^n + b.    Donde M = (           )
                                                            ( 0   alfa*I)
     """
 
